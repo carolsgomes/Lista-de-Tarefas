@@ -16,8 +16,10 @@
 <body>
     <div class="todo-container">
         <header>
+            <!--Cabeçalho-->
             <h1>Lista de Tarefas</h1>
         </header>
+        <!--Conteúdo-->
         <form id="tod-form">
         <p>Liste as suas tarefas:</p>
         <div class="form-control">
@@ -27,6 +29,7 @@
             </button>
         </div>
     </form>
+    <!--Edição da Tarefa-->
     <form id="edit-form">
         <p>Edite sua tarefa</p>
         <div class="form-control">
@@ -35,7 +38,48 @@
             <i class="fa-solid fa-check-double"></i>
         </button>
     </div>
+    <!--Botao para cancelar edição-->
+    <button id="cancel-edit-btn">Cancelar</button> 
     </form>
+    <!--Campo para pesquisa e filtro-->
+    <div id="toolbar"> 
+        <div id="search">
+            <h4>Pequise sua tarefa:</h4>
+            <form>
+                <!--Mensagem de busca-->
+                <input type="text" id="search-input" placeholder="Buscar"> 
+                <button id="erase-button">
+                    <!--Icone deletar busca-->
+                    <i class="fa-solid fa-delete-left"></i> 
+                </button>
+            </form>
+        </div>
+        <!--Filtragem de tarefas-->
+        <div id="filter"> 
+            <h4>Filtrar:</h4>
+            <select id="filter-select">
+                <option value="all">Todas</option>
+                <option value="done">Finalizadas</option>
+                <option value="todo">Pendentes</option>                
+            </select>
+        </div>
+    </div>
+    <!--Lista das Tarefas-->
+    <div id="todo-list"> 
+        <div class="todo"></div>
+        <h3>Estou fazendo...</h3>
+        <button class="finish-todo">
+            <i class="fa-solid fa-check"></i>
+        </button>
+        
+        <button class="eidt-todo">
+            <i class="fa-solid fa-pen"></i>
+        </button> 
+
+        <button class="remove-todo">
+            <i class="fa-solid fa-xmark"></i>
+        </button> 
+    </div>
     </div>
 </body>
 </html>
