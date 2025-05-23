@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link da fonte do cabecalho-->
+    <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
     <title>Lista de Tarefas</title>
     <!--css-->
     <link rel="stylesheet" href="css/styles.css">
@@ -17,46 +19,48 @@
     <div class="todo-container">
         <header>
             <!--Cabeçalho-->
-            <h1>Lista de Tarefas</h1>
+            <h1 class="cabecalho">Lista de Tarefas</h1>
         </header>
         <!--Conteúdo-->
         <form id="tod-form">
-        <p>Liste as suas tarefas:</p>
+        <p class="titulo-verde">ADICIONAR TAREFA:</p>
         <div class="form-control">
-            <input type="text" id="todo-input" placeholder="Quais suas tarefas hoje?">
+            <input type="text" id="todo-input" placeholder="Digite">
             <button type="submit">
-                <i class="fa-thin fa-plus"></i>
+                <i class="fa-solid fa-plus"></i> <!--botao de adicionar-->
             </button>
         </div>
     </form>
     <!--Edição da Tarefa-->
-    <form id="edit-form">
-        <p>Edite sua tarefa</p>
+    <form id="edit-form" class="hide">
+        <p>EDITAR TAREFA:</p>
         <div class="form-control">
         <input type="text" id="edit-input">
         <button type="submit">
-            <i class="fa-solid fa-check-double"></i>
+            <i class="fa-solid fa-pencil"></i> <!--botao de pincel editar-->
         </button>
     </div>
     <!--Botao para cancelar edição-->
-    <button id="cancel-edit-btn">Cancelar</button> 
+    <button id="cancel-edit-btn">
+        <i class="fa-solid fa-xmark"></i>
+    </button> <!--botao de cancelar edicao-->
     </form>
     <!--Campo para pesquisa e filtro-->
     <div id="toolbar"> 
         <div id="search">
-            <h4>Pequise sua tarefa:</h4>
+            <h4 class="titulo-azul">PESQUISAR TAREFA:</h4>
             <form>
                 <!--Mensagem de busca-->
                 <input type="text" id="search-input" placeholder="Buscar"> 
                 <button id="erase-button">
-                    <!--Icone deletar busca-->
-                    <i class="fa-solid fa-delete-left"></i> 
+                    <!--Icone busca-->
+                    <i class="fa-solid fa-magnifying-glass"></i> <!--botao de busca-->
                 </button>
             </form>
         </div>
         <!--Filtragem de tarefas-->
         <div id="filter"> 
-            <h4>Filtrar:</h4>
+            <h4 class="titulo-laranja">FILTRAR:</h4>
             <select id="filter-select">
                 <option value="all">Todas</option>
                 <option value="done">Finalizadas</option>
@@ -67,17 +71,17 @@
     <!--Lista das Tarefas-->
     <div id="todo-list"> 
         <div class="todo"></div>
-        <h3>Estou fazendo...</h3>
+        <h3>MINHAS TAREFAS</h3>
         <button class="finish-todo">
-            <i class="fa-solid fa-check"></i>
+            <i class="fa-solid fa-check"></i> <!--botao de concluido-->
         </button>
         
-        <button class="eidt-todo">
-            <i class="fa-solid fa-pen"></i>
+        <button class="edit-todo">
+            <i class="fa-solid fa-pencil"></i> <!--botao de editar-->
         </button> 
 
         <button class="remove-todo">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-eraser"></i> <!--botao de remover-->
         </button> 
     </div>
     </div>
