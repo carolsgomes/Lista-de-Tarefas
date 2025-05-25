@@ -2,21 +2,30 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: Imprima;
+    font-family: Cambria;
+    font-weight: normal;
     color: #b4bbc2;
     box-sizing: border-box;
 }
-/* corpo e fundo */
-body {
-    background-image: url("../imagens/background.png");
-    background-position: center;
-    background-size: cover;
+/* fundo */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  background: black; /* caso o vídeo não preencha alguma área */
 }
+
 /* botoes */
 button {
-    color: #6c6c6c;
+    color: #a8a3b3;
     background-color: transparent;
-    border: 2px solid #454545;
+    border: 1px solid #707070;
     border-radius: 5px;
     padding: .3rem .6rem;
     font-size: 1rem;
@@ -25,12 +34,13 @@ button {
     justify-content: center;
     align-items: center;
     transition: 0.2s;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 button:hover {
-    background-color: #282828;
+    color: #454545;
+    background-color: #a8a3b3;
 }
 button i {
     color: #6c6c6c;
@@ -39,22 +49,32 @@ button i {
 }
 
 button:hover > i {
-    background-color: #282828;
+    color: #454545;
+    background-color: transparent;
 }
 
 button[type="submit"] i { /* cor botao add e edit*/
-  color: #3e7a42;
+  color: #a1b0e9;
+}
+button[type="submit"]:hover i { /* cor botao add e edit*/
+  color: #454545;
 }
 
 #erase-button i { /* cor botao buscar */
-    color: #3e637a; 
+    color: #aa8eb9; 
+}
+#erase-button:hover i { /* cor botao buscar */
+    color: #454545; 
 }
 
-input, select {
-    padding: .30rem;
+input, select { /*lacunas de entrada*/
+    padding: .3rem;
     background-color: transparent;
-    border: 2px solid #454545;
+    border: 1px solid #707070;
     border-radius: 5px;
+    max-height: 25px;
+    flex: 1;
+    color: #fff;
 }
 
 .hide {
@@ -62,49 +82,107 @@ input, select {
 }
 
 /* todo header */
-.todo-container { 
-    max-width: 500px;
-    padding: 2rem;
-    margin: 3rem auto;
-    background-color: #141414;
-    border: 3px solid #3f3351;
-    border-radius: 15px;
+.todo-container {
+  max-width: 450px;
+  max-height: 400px;
+  height: 400px;
+  padding: 1rem 2rem 2rem 2rem;
+  margin: 1rem 0 0.5rem 2rem;
+  background: linear-gradient(
+    to bottom, 
+    rgba(51, 14, 89, 0.6),
+    rgba(16, 16, 16, 1.0)
+  );
+  border: 2px solid #1f2656;
+  border-radius: 15px;
+  box-shadow: 10px 4px 20px rgba(2, 9, 46, 1.0);
+  display: flex;
+  flex-direction: column;
 }
+
 .todo-container header {
     text-align: center;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #454545;
+    padding: 0 1rem 0.2rem 1rem;
+    border-bottom: 1px solid #a8a3b3;
 }
 .cabecalho {
     color: #ececec;
-    font-family: 'Liu Jian Mao Cao', cursive;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 0.8);
+    font-family: Georgia;
+    font-style: italic;
 }
 
 /* titulos coloridos */
-.titulo-verde {
-  color: #3e7a42;
-  font-weight: bold;
-}
-
 .titulo-azul {
-  color: #3e637a;
+  color: #a1b0e9;
+  font-weight: normal;
+  padding-bottom: .2rem;
 }
 
-.titulo-laranja {
-  color: #7a673e;
+.titulo-roxo {
+  color: #aa8eb9;
+  padding-bottom: .2rem;
 }
 
-/* listas/form*/
+.titulo-amarelo {
+  color: #cdc880;
+  padding-bottom: .2rem;
+}
+.descricao {
+  text-align: center; 
+  color:#575757;  
+  font-size: 14px;
+}
+
+/* listas-form*/
 #todo-form, #edit-form {
-    padding: 1rem;
-    border-bottom: 1px solid #454545;
+    padding: .5rem 1rem 0 1rem;
+}
+
+#todo-list {
+  flex: 1;
+  overflow-y: auto;
+  display: block;
+  border: 1px solid #330e59;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;  
+  background: rgba(0, 0, 0, 0.4); 
+}
+
+.todo {
+  background: transparent;
+  justify-content: space-around;
+  align-items: center;
+  padding: .5rem 0 .5rem .5rem;
+  display: flex;
+  border-bottom: 1px solid #575757;
+  transition: 0.3s;
+}
+
+.todo h3 {
+  flex: 1;
+  font-family: Cambria;
+  color: #fcfcfc;
+}
+
+.todo button {
+  margin-left: 5px;
+}
+
+.done { /* tarefa concluida*/
+    background-color: #000;
+}
+.done h3 {
+    color: #fff;
+    text-decoration: line-through;
+    font-style: italic;
 }
 
 #todo-form p, 
 #edit-form p {
-    font-weight: bold;
-    margin-bottom: .5rem;    
+    font-weight: normal; 
 }
 
 .form-control {
@@ -119,21 +197,43 @@ input, select {
     margin-top: 1rem;
 }
 
+#todo-list::-webkit-scrollbar { /* barra de rolagem da lista */
+  width: 8px; 
+}
+
+#todo-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 8px;
+}
+
+#todo-list::-webkit-scrollbar-thumb {
+  background-color: #aa8eb9;
+  border-radius: 8px;
+}
+
+#todo-list::-webkit-scrollbar-thumb:hover {
+  background-color: #6f547f;
+  transition: background-color 0.3s ease;
+
+}
+
+
 /* toolbar */
 #toolbar {
-    padding: 1rem 1rem 1rem 0;
-    border-bottom: 1px solid #454545;
+    padding: .5rem 1rem 1rem 0;
+    border-bottom: 1px solid #a8a3b3;
     display: flex;
 }
 
-#toolbar h4 {
-    margin-bottom: .5rem;
-}
-
+/* perquisar tarefa*/
 #search {
     width: 70%;
     display: flex;
-    flex-direction:  column;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    flex-direction: column;
+
 }
 
 #search form {
@@ -142,5 +242,67 @@ input, select {
 
 #search input {
     width: 100%;
-    margin-right: .2rem;
+    margin-right: 0.2rem;
+}
+
+/*filtro*/
+#filter {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+
+}
+#filter select {
+    flex: 1;
+    color: #6c6c6c;
+    background-color: transparent;
+    cursor: pointer;
+}
+#filter select:focus {
+    color: #b4bbc2;
+    background-color: #282828;
+    outline: none;
+}
+
+
+/* ------------- mini pesquisa google ----------------- */
+#mini-google-form {
+  display: flex;
+  max-width: 450px;
+  border: 2px solid #1f2656;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8); 
+  box-shadow: 10px 4px 20px rgba(2, 9, 46, 1.0);
+  margin: 0.5rem 2rem 2rem 2rem;
+}
+
+#mini-google-form input {
+  max-height: 100%;
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  font-family: Cambria;
+}
+
+#mini-google-form input::placeholder {
+  color: #454545;
+}
+
+#mini-google-form button {
+  border-radius: 8px;
+  background-color: #330e59;
+  border: none;
+  padding: 1rem;
+  margin: .2rem;
+  cursor: pointer;
+  font-size: 22px;
+  transition: background-color 0.3s ease;
+}
+
+#mini-google-form button:hover {
+  background-color: #aa8eb9;
 }

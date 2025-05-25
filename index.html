@@ -13,19 +13,22 @@
     <!--icones-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--javascript-->
-    <script src="js/scripts.js" defer></script>
+    <script src="javascript/scripts.js" defer></script>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+  <source src="imagens/bgcat.mp4" type="video/mp4" />
+</video>
     <div class="todo-container">
         <header>
             <!--Cabeçalho-->
-            <h1 class="cabecalho">Lista de Tarefas</h1>
+            <h2 class="cabecalho">Lista de Tarefas ｯ</h2>
         </header>
         <!--Conteúdo-->
-        <form id="tod-form">
-        <p class="titulo-verde">ADICIONAR TAREFA:</p>
+        <form id="todo-form">
+        <p class="titulo-azul">Adicionar Tarefa:</p>
         <div class="form-control">
-            <input type="text" id="todo-input" placeholder="Digite">
+            <input type="text" id="todo-input" placeholder="Digite uma tarefa">
             <button type="submit">
                 <i class="fa-solid fa-plus"></i> <!--botao de adicionar-->
             </button>
@@ -33,7 +36,7 @@
     </form>
     <!--Edição da Tarefa-->
     <form id="edit-form" class="hide">
-        <p>EDITAR TAREFA:</p>
+        <p>Editar tarefa:</p>
         <div class="form-control">
         <input type="text" id="edit-input">
         <button type="submit">
@@ -48,7 +51,7 @@
     <!--Campo para pesquisa e filtro-->
     <div id="toolbar"> 
         <div id="search">
-            <h4 class="titulo-azul">PESQUISAR TAREFA:</h4>
+            <h4 class="titulo-roxo">Pesquisar Tarefa:</h4>
             <form>
                 <!--Mensagem de busca-->
                 <input type="text" id="search-input" placeholder="Buscar"> 
@@ -60,7 +63,7 @@
         </div>
         <!--Filtragem de tarefas-->
         <div id="filter"> 
-            <h4 class="titulo-laranja">FILTRAR:</h4>
+            <h4 class="titulo-amarelo">Filtrar:</h4>
             <select id="filter-select">
                 <option value="all">Todas</option>
                 <option value="done">Finalizadas</option>
@@ -68,22 +71,35 @@
             </select>
         </div>
     </div>
-    <!--Lista das Tarefas-->
-    <div id="todo-list"> 
-        <div class="todo"></div>
-        <h3>MINHAS TAREFAS</h3>
-        <button class="finish-todo">
-            <i class="fa-solid fa-check"></i> <!--botao de concluido-->
-        </button>
-        
-        <button class="edit-todo">
-            <i class="fa-solid fa-pencil"></i> <!--botao de editar-->
-        </button> 
-
-        <button class="remove-todo">
-            <i class="fa-solid fa-eraser"></i> <!--botao de remover-->
-        </button> 
+    <!-- Lista das Tarefas -->
+     <h3 style="margin-top: 0.5rem; padding-left: .5rem; font-style:italic;">Minhas tarefas:</h3>
+    <div id="todo-list">        
+         <div class="todo">
+            <h3>teste de tarefa</h3>
+          <button class="finish-todo">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="edit-todo">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+          <button class="remove-todo">
+            <i class="fa-solid fa-eraser"></i>
+          </button>
+        </div> 
+      </div>
     </div>
-    </div>
+<!------------------------------mini barra google--------------------------------------------->
+<form action="https://www.google.com/search" method="GET" target="_blank" id="mini-google-form">
+  <input 
+    type="text" 
+    name="q" 
+    placeholder="Pesquisar no Google..." 
+    required 
+    autocomplete="off"
+  />
+  <button id="erase-button">
+    <i class="fa-solid fa-magnifying-glass"></i> <!--botao de busca-->
+    </button>
+</form>
 </body>
 </html>
