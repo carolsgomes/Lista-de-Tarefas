@@ -108,6 +108,7 @@ input, select { /*lacunas de entrada*/
 .cabecalho {
     color: #ececec;
     text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 0.8),
       0 0 20px rgba(255, 255, 255, 0.8);
     font-family: Georgia;
     font-style: italic;
@@ -175,7 +176,7 @@ input, select { /*lacunas de entrada*/
     background-color: #000;
 }
 .done h3 {
-    color: #fff;
+    color: #a2a2a2;
     text-decoration: line-through;
     font-style: italic;
 }
