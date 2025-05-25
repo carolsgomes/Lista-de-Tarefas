@@ -1,4 +1,5 @@
 //////////////LISTA DE TAREFAS////////////////
+
 //// Selecao de elementos
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
@@ -6,8 +7,15 @@ const todoList = document.querySelector("#todo-list");
 const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
+const searchInput = document.querySelector("#search-input");
+const filterSelect = document.querySelector("#filter-select"); 
+const eraseButton = document.querySelector("#erase-button");
+const miniGoogleInput = document.getElementById("mini-google-input");
+const miniGoogleBtn = document.getElementById("mini-google-btn");
+
 
 let oldInputValue;
+
 
 
 //// Funcoes
@@ -46,7 +54,7 @@ const toggleForms = () => { // faz aparecer somente o edit
   todoList.classList.toggle("hide");
 }
 
-const updateTodo = (text) => { //funcao do atualizar
+const updateTodo = (text) => { //funcao do atualizar para edicao
 
   const todos = document.querySelectorAll(".todo"); //seleciona tds
 
@@ -60,6 +68,63 @@ const updateTodo = (text) => { //funcao do atualizar
   })
 }
 
+//buscar
+  const searchTasks = () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const tasks = document.querySelectorAll(".todo");
+
+  tasks.forEach((task) => {
+    const title = task.querySelector("h3").innerText.toLowerCase();
+    const matchesSearch = title.includes(searchTerm);
+
+    task.style.display = matchesSearch ? "flex" : "none";
+  });
+}
+
+ const clearSearch = (e) => { // limpa a busca e mostra as tarefas novamente
+  e.preventDefault();
+  searchInput.value = "";
+  searchTasks();
+}
+
+// filtrar 
+function filterByStatus() {
+  const selectedStatus = filterSelect.value; // pega o valor 
+  const tasks = document.querySelectorAll(".todo");    
+
+  tasks.forEach((task) => {
+    const isDone = task.classList.contains("done"); // verifica se a tarefa tem classe 'done'
+
+    let show = false;
+
+    if (selectedStatus === "all") {
+      show = true;
+    } else if (selectedStatus === "done" && isDone) {
+      show = true;
+    } else if (selectedStatus === "todo" && !isDone) {
+      show = true;
+    }
+
+    task.style.display = show ? "flex" : "none";  // mostra ou oculta a tarefa
+  });
+}
+
+
+//popup dp google
+const openMiniSearch = () => {
+  const term = miniGoogleInput.value.trim();
+
+  if (term !== "") {
+    const url = "https://www.google.com/search?q=" + encodeURIComponent(term);
+    window.open(url, "popupWindow", "width=800,height=400,display=flex,top=200,left=300");
+    miniGoogleInput.value = ""; 
+  } else {
+    alert("Digite algo para pesquisar");
+  }
+};
+
+
+
 ///// Eventos
 todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -72,6 +137,7 @@ todoForm.addEventListener("submit", (e) => {
     }
 
 });
+
 // verificar quando um botão for clicado
 document.addEventListener("click", (e) => { 
 
@@ -125,5 +191,24 @@ cancelEditBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   toggleForms();
+});
+
+//executa a busca por texto
+searchInput.addEventListener("input", searchTasks);
+
+//aplica o filtro por status
+filterSelect.addEventListener("change", filterByStatus);
+
+//limpa o campo de busca
+eraseButton.addEventListener("click", clearSearch);
+
+//mini-google
+miniGoogleBtn.addEventListener("click", openMiniSearch);
+
+miniGoogleInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault(); 
+    miniGoogleBtn.click();
+  }
 });
 
