@@ -41,7 +41,7 @@
 </div>
 </div></div>
 
-<audio id="alarme" src="sons/alertaCronometro.mp3" preload="auto"></audio>
+<audio id="alarme" src="sons/fimCronometro.mp3" preload="auto"></audio>
 
 
    <!-----------------container lista de tarefas---------------------->
@@ -118,7 +118,7 @@
   </button>
 </div>
 
-  <!----------calendario-------->
+  <!------------------------------calendario--------------------------------------------->
 <div id="mini-calendar">
     <div id="calendar-header">
       <button id="prev-month" style="cursor:pointer; border: none;">◀</button>
@@ -139,7 +139,7 @@
         <button id="close-modal" class="fa-solid fa-xmark" style="cursor:pointer;"></button>
       </div>
     </div>
-    <!-- Fundo do evento -->
+    <!--fundo do evento -->
     <div id="modal-bg"></div>
   </div>
 
@@ -161,6 +161,23 @@
   </div>
 </div>
 <div id="notes-modal-bg" style="display:none;"></div>
+
+<!------------------------------cursos--------------------------------------------->
+<div id="curso-container">
+  <h2>Controle de Progresso de Cursos</h2>
+  <form id="curso-form">
+    <input type="text" id="nome" placeholder="Nome do Curso" required />
+    <input type="number" id="totalModulos" placeholder="Total de Aulas/Módulos" required />
+    <input type="number" id="moduloAtual" placeholder="Módulo Atual" required />
+    <input type="text" id="autor" placeholder="Autor do Curso" required />
+    <input type="number" id="prazo" placeholder="Prazo (dias)" required />
+    <button type="submit">Incluir</button>
+  </form>
+
+  <div id="lista-cursos"></div>
+</div>
+
+
 
 
  

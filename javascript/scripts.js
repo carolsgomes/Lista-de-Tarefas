@@ -186,7 +186,7 @@ function filterByStatus() {
 }
 
 
-//popup dp google
+//////////////POPUP DO GOOGLE////////////////
 const openMiniSearch = () => {
   const term = miniGoogleInput.value.trim();
 
@@ -200,8 +200,6 @@ const openMiniSearch = () => {
 };
 
 
-
-///// Eventos
 todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -288,8 +286,7 @@ miniGoogleInput.addEventListener("keydown", (event) => {
   }
 });
 
-//calendario
-
+//////////////CALENDARIO////////////////
 const calendarDates = document.getElementById('calendar-dates');
 const monthYear = document.getElementById('month-year');
 const prevMonthBtn = document.getElementById('prev-month');
@@ -328,7 +325,7 @@ function renderCalendar(date) {
     dateCell.classList.add('calendar-day');
 
     const dateKey = `${String(day).padStart(2, '0')}-${String(month + 1).padStart(2, '0')}`;
-      const holidays = [
+      const holidays = [ //dias de feriado
         '01-01',
         '21-04',
         '01-05',
@@ -402,7 +399,7 @@ nextMonthBtn.addEventListener('click', () => {
 
 renderCalendar(currentDate);
 
-///// cronometro
+//////////////CRONOMETRO////////////////
 const cronometro = document.getElementById('cronometro');
 const inputHours = document.getElementById('input-hours');
 const inputMinutes = document.getElementById('input-minutes');
@@ -432,7 +429,7 @@ function updateDisplay() {
 }
 
 function startCountdown() {
-  if (interval) return; // evita múltiplos intervals
+  if (interval) return;
 
   if (totalSeconds <= 0) {
     alert('Defina um tempo maior que zero!');
@@ -452,7 +449,7 @@ function startCountdown() {
         clearInterval(interval);
         interval = null;
 
-        // Tocar o som ao final
+        //tocar o som ao final
         alarme.currentTime = 0;
         alarme.play().catch(e => console.log("Erro ao tocar som:", e));
 
@@ -509,3 +506,129 @@ resetBtn.addEventListener('click', resetCountdown);
 
 // inicia display
 updateDisplay();
+
+//////////CURSOS
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('curso-form');
+  const lista = document.getElementById('lista-cursos');
+  let cursos = JSON.parse(localStorage.getItem('cursos')) || [];
+
+  function salvarCursos() {
+    localStorage.setItem('cursos', JSON.stringify(cursos));
+  }
+
+  function renderizarCursos() {
+    lista.innerHTML = "";
+    cursos.forEach((curso, index) => renderizarCurso(curso, index));
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const total = parseInt(document.getElementById('totalModulos').value);
+    const atual = parseInt(document.getElementById('moduloAtual').value);
+    const autor = document.getElementById('autor').value;
+    const prazo = parseInt(document.getElementById('prazo').value);
+    const percentual = Math.min(100, ((atual / total) * 100).toFixed(0));
+
+    const novoCurso = { nome, total, atual, autor, prazo, percentual };
+    cursos.push(novoCurso);
+    salvarCursos();
+
+    renderizarCursos();
+    form.reset();
+  });
+
+  function renderizarCurso(curso, index) {
+    const item = document.createElement('div');
+    item.classList.add('curso-item');
+
+    const header = document.createElement('div');
+    header.style.display = 'flex';
+    header.style.justifyContent = 'space-between';
+    header.style.alignItems = 'center';
+
+    const info = document.createElement('div');
+    const titulo = document.createElement('strong');
+    titulo.style.fontSize = '16px';
+    titulo.textContent = curso.nome;
+    const autor = document.createElement('span');
+    autor.style.fontSize = '13px';
+    autor.style.opacity = '0.8';
+    autor.textContent = curso.autor;
+
+    info.appendChild(titulo);
+    info.appendChild(document.createElement('br'));
+    info.appendChild(autor);
+
+    const botoes = document.createElement('div');
+
+    const btnEditar = document.createElement('button');
+    btnEditar.classList.add('editar-btn');
+    btnEditar.dataset.index = index;
+    btnEditar.style.marginRight = '5px';
+    const iconEditar = document.createElement('i');
+    iconEditar.className = 'fa-solid fa-pencil';
+    btnEditar.appendChild(iconEditar);
+
+    const btnExcluir = document.createElement('button');
+    btnExcluir.classList.add('excluir-btn');
+    btnExcluir.dataset.index = index;
+    const iconExcluir = document.createElement('i');
+    iconExcluir.className = 'fa-solid fa-eraser';
+    btnExcluir.appendChild(iconExcluir);
+
+    botoes.appendChild(btnEditar);
+    botoes.appendChild(btnExcluir);
+
+    header.appendChild(info);
+    header.appendChild(botoes);
+
+    const barraExterna = document.createElement('div');
+    barraExterna.classList.add('barra-externa');
+    barraExterna.style.marginTop = '8px';
+
+    const barraInterna = document.createElement('div');
+    barraInterna.classList.add('barra-interna');
+    barraInterna.style.width = `${curso.percentual}%`;
+    barraExterna.appendChild(barraInterna);
+
+    const progresso = document.createElement('div');
+    progresso.style.fontSize = '12px';
+    progresso.style.marginTop = '4px';
+    progresso.textContent = `${curso.percentual}% concluído`;
+
+    item.appendChild(header);
+    item.appendChild(barraExterna);
+    item.appendChild(progresso);
+
+    lista.appendChild(item);
+  }
+
+  lista.addEventListener('click', (event) => {
+    if (event.target.closest('.excluir-btn')) {
+      const index = parseInt(event.target.closest('.excluir-btn').dataset.index);
+      cursos.splice(index, 1);
+      salvarCursos();
+      renderizarCursos();
+    }
+
+    if (event.target.closest('.editar-btn')) {
+      const index = parseInt(event.target.closest('.editar-btn').dataset.index);
+      const curso = cursos[index];
+
+      document.getElementById('nome').value = curso.nome;
+      document.getElementById('totalModulos').value = curso.total;
+      document.getElementById('moduloAtual').value = curso.atual;
+      document.getElementById('autor').value = curso.autor;
+      document.getElementById('prazo').value = curso.prazo;
+
+      cursos.splice(index, 1);
+      salvarCursos();
+      renderizarCursos();
+    }
+  });
+
+  renderizarCursos();
+});
