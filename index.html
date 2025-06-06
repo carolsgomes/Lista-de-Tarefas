@@ -1,7 +1,7 @@
 <!--Projeto Lista de Tarefas - Ana Carolina Gomes, Clarisse Santana, Flavia Mota e Laiza Kevelly-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +12,47 @@
     <link rel="stylesheet" href="css/styles.css">
     <!--icones-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--javascript-->
     <script src="javascript/scripts.js" defer></script>
 </head>
 <body>
+  <!------------------fundo da pagina----------------------->
     <video autoplay muted loop id="bg-video">
   <source src="imagens/bgcat.mp4" type="video/mp4" />
 </video>
+
+  <!------------------cronometro----------------------->
+  <div class="cronometro-wrapper">
+  <div id="cronometro-container">
+    <h2 class="cabecalho">Tempo de Estudos:</h2>
+<div class="inputs">
+  <input type="number" id="input-hours" min="0" max="23" placeholder="Horas" />
+  <input type="number" id="input-minutes" min="0" max="59" placeholder="Minutos" />
+  <input type="number" id="input-seconds" min="0" max="59" placeholder="Segundos" />
+</div>
+
+<div id="cronometro">00:00:00</div>
+
+<div class="botoes-container">
+  <button id="start-btn" class="fa-solid fa-play" title="Iniciar"></button>
+  <button id="pause-btn" class="fa-solid fa-pause" disabled title="Pausar"></button>
+  <button id="reset-btn" class="fa-solid fa-power-off" disabled title="Resetar"></button>
+</div>
+</div></div>
+
+<audio id="alarme" src="sons/alertaCronometro.mp3" preload="auto"></audio>
+
+
+   <!-----------------container lista de tarefas---------------------->
     <div class="todo-container">
         <header>
-            <!--Cabeçalho-->
+            <!--Cabeçalho da lista de tarefas-->
             <h2 class="cabecalho">Lista de Tarefas ツ</h2>
         </header>
         <!--Conteúdo-->
         <form id="todo-form">
-        <p class="titulo-azul">Adicionar Tarefa:</p>
+        <p class="titulo-adicionar">Adicionar tarefa:</p>
         <div class="form-control">
             <input type="text" id="todo-input" placeholder="Digite uma tarefa">
             <button type="submit">
@@ -42,16 +68,16 @@
         <button type="submit">
             <i class="fa-solid fa-check"></i> <!--botao de pincel editar-->
         </button>
-    </div>
+    
     <!--Botao para cancelar edição-->
     <button id="cancel-edit-btn">
-        <i class="fa-solid fa-xmark"></i>
-    </button> <!--botao de cancelar edicao-->
+        <i class="fa-solid fa-xmark"></i><!--botao de cancelar edicao-->
+    </button></div> 
     </form>
     <!--Campo para pesquisa e filtro-->
     <div id="toolbar"> 
         <div id="search">
-            <h4 class="titulo-roxo">Pesquisar Tarefa:</h4>
+            <h4 class="titulo-pesquisar">Pesquisar tarefa:</h4>
             <form>
                 <!--Mensagem de busca-->
                 <input type="text" id="search-input" placeholder="Buscar"> 
@@ -63,7 +89,7 @@
         </div>
         <!--Filtragem de tarefas-->
         <div id="filter"> 
-            <h4 class="titulo-amarelo">Filtrar:</h4>
+            <h4 class="titulo-filtrar">Filtrar:</h4>
             <select id="filter-select">
                 <option value="all">Todas</option>
                 <option value="done">Finalizadas</option>
@@ -72,23 +98,12 @@
         </div>
     </div>
     <!-- Lista das Tarefas -->
-     <h3 style="margin-top: 0.5rem; padding-left: .5rem; font-style:italic;">Minhas tarefas:</h3>
+     <h3 style="margin-top: 0.5rem; padding-left: .5rem;">Minhas tarefas:</h3>
     <div id="todo-list">
-              
-         <div class="todo">
-            <h3>teste de tarefa</h3>
-          <button class="finish-todo">
-            <i class="fa-solid fa-check"></i>
-          </button>
-          <button class="edit-todo">
-            <i class="fa-solid fa-pencil"></i>
-          </button>
-          <button class="remove-todo">
-            <i class="fa-solid fa-eraser"></i>
-          </button>
-        </div> 
       </div>
     </div>
+
+
 <!------------------------------mini barra google--------------------------------------------->
 <div id="mini-google-form">
   <input 
@@ -99,8 +114,55 @@
     autocomplete="off"
   />
   <button type="button" id="mini-google-btn">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-brands fa-google"></i>
   </button>
 </div>
+
+  <!----------calendario-------->
+<div id="mini-calendar">
+    <div id="calendar-header">
+      <button id="prev-month" style="cursor:pointer; border: none;">◀</button>
+      <h3 id="month-year"></h3>
+      <button id="next-month" style="cursor:pointer; border: none;">▶</button>
+    </div>
+    <div id="calendar-days">
+      <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+    </div>
+    <div id="calendar-dates"></div>
+
+    <!---- adicionar/mostrar eventos -->
+    <div id="event-modal">
+      <h4 id="modal-date"></h4>
+      <textarea id="event-text" rows="5" placeholder="Digite seu lembrete aqui..."></textarea>
+      <div style="margin-top:10px; text-align:right;">
+        <button id="save-event" class="fa-solid fa-check" style="cursor:pointer;"></button>
+        <button id="close-modal" class="fa-solid fa-xmark" style="cursor:pointer;"></button>
+      </div>
+    </div>
+    <!-- Fundo do evento -->
+    <div id="modal-bg"></div>
+  </div>
+
+  <script src="calendar.js"></script>
+
+ <!--botão para mudar o fundo-->
+<div id="btn-rodape">
+  <button id="change-bg-btn" class="fa-solid fa-image" title="Alterar background"></button>
+  <button id="github-btn" class="fa-brands fa-github" title="Abrir Github"></button>
+  <button id="linkedin-btn" class="fa-brands fa-linkedin" title="Abrir Linkedin"></button>
+  <button id="notes-btn" class="fa-solid fa-note-sticky" title="Anotações"></button>
+</div>
+<!--modal das notas -->
+<div id="notes-modal" style="display:none;">
+  <textarea id="notes-text" rows="8" placeholder="Digite suas notas aqui..."></textarea>
+  <div style="margin-top:10px; text-align:right;">
+    <button id="save-notes" class="fa-solid fa-check" title="Salvar"></button>
+    <button id="close-notes" class="fa-solid fa-xmark" title="Fechar"></button>
+  </div>
+</div>
+<div id="notes-modal-bg" style="display:none;"></div>
+
+
+ 
 </body>
 </html>

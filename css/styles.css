@@ -1,13 +1,15 @@
-/* Geral */
+/* ------------- body geral ----------------- */
 * {
     padding: 0;
     margin: 0;
     font-family: Cambria;
     font-weight: normal;
+    font-size: 14px;
     color: #b4bbc2;
     box-sizing: border-box;
 }
-/* fundo */
+
+/* ------------- baackground ----------------- */
 #bg-video {
   position: fixed;
   top: 0;
@@ -21,9 +23,9 @@
   background: black; /* caso o vídeo não preencha alguma área */
 }
 
-/* botoes */
+/* ------------- botoes em geral ----------------- */
 button {
-    color: #a8a3b3;
+    color: #a5a5a5;
     background-color: transparent;
     border: 1px solid #707070;
     border-radius: 5px;
@@ -39,8 +41,9 @@ button {
 }
 
 button:hover {
-    color: #454545;
-    background-color: #a8a3b3;
+    color: #373737;
+    background-color: #a5a5a5;
+    border: none;
 }
 button i {
     color: #6c6c6c;
@@ -49,27 +52,27 @@ button i {
 }
 
 button:hover > i {
-    color: #454545;
+    color: #373737;
     background-color: transparent;
 }
 
 button[type="submit"] i { /* cor botao add e edit*/
-  color: #a1b0e9;
+  color: #a5a5a5;
 }
 button[type="submit"]:hover i { /* cor botao add e edit*/
-  color: #454545;
+  color: #373737;
 }
 
 #erase-button i { /* cor botao buscar */
-    color: #aa8eb9; 
+    color: #929292; 
 }
 #erase-button:hover i { /* cor botao buscar */
-    color: #454545; 
+    color: #373737; 
 }
 
 input, select { /*lacunas de entrada*/
     padding: .3rem;
-    background-color: transparent;
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid #707070;
     border-radius: 5px;
     max-height: 25px;
@@ -81,21 +84,22 @@ input, select { /*lacunas de entrada*/
     display: none;
 }
 
-/* todo header */
+/* ------------- lista de tarefas ----------------- */
 .todo-container {
-  max-width: 450px;
-  max-height: 400px;
-  height: 400px;
-  padding: 1rem 2rem 2rem 2rem;
-  margin: 1rem 0 0.5rem 2rem;
+  justify-content: space-between;
+  max-width: 400px;
+  max-height: 420px;
+  height: 420px;
+  padding: 1rem 1rem 1rem 1rem;
+  margin: -12rem 0 0.5rem 4rem;
   background: linear-gradient(
     to bottom, 
-    rgba(51, 14, 89, 0.6),
-    rgba(16, 16, 16, 1.0)
+    rgba(64, 64, 64, 0.8),
+    rgba(0, 0, 0, 0.8)
   );
-  border: 2px solid #1f2656;
+  border: 2px solid #000;
   border-radius: 15px;
-  box-shadow: 10px 4px 20px rgba(2, 9, 46, 1.0);
+  box-shadow: 10px 4px 20px #000;
   display: flex;
   flex-direction: column;
 }
@@ -103,31 +107,33 @@ input, select { /*lacunas de entrada*/
 .todo-container header {
     text-align: center;
     padding: 0 1rem 0.2rem 1rem;
-    border-bottom: 1px solid #a8a3b3;
+    border-bottom: 1px solid #575757;
 }
 .cabecalho {
     color: #ececec;
     text-shadow: 0 0 10px rgba(255, 255, 255, 1),
-      0 0 20px rgba(255, 255, 255, 0.8),
       0 0 20px rgba(255, 255, 255, 0.8);
     font-family: Georgia;
     font-style: italic;
+    font-size: 18px;
 }
 
-/* titulos coloridos */
-.titulo-azul {
-  color: #a1b0e9;
+/* titulos lista de tarefas*/
+.titulo-adicionar {
+  color: #a5a5a5;
   font-weight: normal;
+  font-size: 14px;
+}
+
+.titulo-pesquisar {
+  color: #a5a5a5;
+  font-size: 14px;
   padding-bottom: .2rem;
 }
 
-.titulo-roxo {
-  color: #aa8eb9;
-  padding-bottom: .2rem;
-}
-
-.titulo-amarelo {
-  color: #cdc880;
+.titulo-filtrar {
+  color: #a5a5a5;
+  font-size: 14px;
   padding-bottom: .2rem;
 }
 .descricao {
@@ -145,7 +151,7 @@ input, select { /*lacunas de entrada*/
   flex: 1;
   overflow-y: auto;
   display: block;
-  border: 1px solid #330e59;
+  border: 1px solid #212121;
   padding: 0.5rem;
   border-radius: 8px;
   margin-top: 0.5rem;  
@@ -166,6 +172,7 @@ input, select { /*lacunas de entrada*/
   flex: 1;
   font-family: Cambria;
   color: #fcfcfc;
+  font-size: 14px;
 }
 
 .todo button {
@@ -183,7 +190,9 @@ input, select { /*lacunas de entrada*/
 
 #todo-form p, 
 #edit-form p {
-    font-weight: normal; 
+    font-weight: normal;
+    font-size: 14px;
+    margin-bottom: .2rem; 
 }
 
 .form-control {
@@ -195,7 +204,8 @@ input, select { /*lacunas de entrada*/
 }
 
 #cancel-edit-btn {
-    margin-top: 1rem;
+    margin-left: .2rem;
+    flex-direction: column;    
 }
 
 #todo-list::-webkit-scrollbar { /* barra de rolagem da lista */
@@ -203,17 +213,17 @@ input, select { /*lacunas de entrada*/
 }
 
 #todo-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1); 
+  background: rgba(255, 255, 255, 0.092); 
   border-radius: 8px;
 }
 
 #todo-list::-webkit-scrollbar-thumb {
-  background-color: #aa8eb9;
+  background-color: #a5a5a5;
   border-radius: 8px;
 }
 
 #todo-list::-webkit-scrollbar-thumb:hover {
-  background-color: #6f547f;
+  background-color: #454545;
   transition: background-color 0.3s ease;
 
 }
@@ -222,41 +232,40 @@ input, select { /*lacunas de entrada*/
 /* toolbar */
 #toolbar {
     padding: .5rem 1rem 1rem 0;
-    border-bottom: 1px solid #a8a3b3;
+    border-bottom: 1px solid #575757;
     display: flex;
 }
 
 /* perquisar tarefa*/
 #search {
-    width: 70%;
-    display: flex;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
-    flex-direction: column;
-
+  width: 70%;
+  display: flex;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  flex-direction: column;
 }
 
 #search form {
-    display: flex;
+  display: flex;
 }
 
 #search input {
-    width: 100%;
-    margin-right: 0.2rem;
+  width: 100%;
+  margin-right: 0.2rem;
 }
 
 /*filtro*/
 #filter {
-    width: 35%;
-    display: flex;
-    flex-direction: column;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
 
 }
 #filter select {
     flex: 1;
     color: #6c6c6c;
-    background-color: transparent;
+    background: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 #filter select:focus {
@@ -269,13 +278,13 @@ input, select { /*lacunas de entrada*/
 /* ------------- mini pesquisa google ----------------- */
 #mini-google-form {
   display: flex;
-  max-width: 450px;
-  border: 2px solid #1f2656;
+  max-width: 400px;
+  border: 2px solid #000;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.8); 
-  box-shadow: 10px 4px 20px rgba(2, 9, 46, 1.0);
-  margin: 0.5rem 2rem 2rem 2rem;
+  box-shadow: 10px 4px 20px #000;
+  margin: 0.5rem 2rem 0.5rem 4rem;
 }
 
 #mini-google-form input {
@@ -290,12 +299,12 @@ input, select { /*lacunas de entrada*/
 }
 
 #mini-google-form input::placeholder {
-  color: #454545;
+  color: #707070;
 }
 
 #mini-google-form button {
   border-radius: 8px;
-  background-color: #330e59;
+  background-color: #373737;
   border: none;
   padding: 1rem;
   margin: .2rem;
@@ -305,5 +314,324 @@ input, select { /*lacunas de entrada*/
 }
 
 #mini-google-form button:hover {
-  background-color: #aa8eb9;
+  background-color: #929292;
+}
+
+/*----------mini calendario----------*/
+#mini-calendar {
+  max-width: 400px;
+  width: 400px;
+  min-height: 200px;
+  max-height: 220px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #000;
+  box-shadow: 10px 4px 20px #000;
+  color: #ccc;
+  padding: 8px;
+  border-radius: 12px;
+  margin-left: 4rem;
+  font-family: Georgia;
+  font-size: 12px;
+}
+
+#calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #575757;
+}
+
+#calendar-days,
+#calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+#calendar-days {
+  font-weight: bold;
+  color: #a5a5a5;
+}
+
+.calendar-day {
+  padding: 4px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+}
+
+.calendar-day:hover {
+  background-color: #333;
+}
+
+.calendar-day.has-event {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+.calendar-day.today {
+  border: 1px solid #929292;
+}
+
+.calendar-day.holiday {
+  color: #ff4d4d;
+  font-weight: bold;
+  background-color: #33000030; 
+  border-radius: 12px;
+}
+
+/* estilos do evento */
+#event-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #575757;
+  z-index: 10;
+  max-width: auto;
+  min-width: 300px;
+  color: #eee;
+}
+
+#event-text {
+  width: 100%;
+  border-radius: 5px;
+  background: #282828;
+  color: #eee;
+  border: none;
+  padding: 6px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+#modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9;
+}
+
+#save-event,
+#close-modal {
+  margin-right: 5px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#save-event {
+    color: #a5a5a5;
+    border: 1px solid #a5a5a5;
+}
+#save-event:hover {
+    color: #a5a5a5;
+    color: #373737;
+    border: 1px solid #a5a5a5;
+}
+#close-modal {
+    color: #a5a5a5;
+    border: 1px solid #a5a5a5;
+}
+#close-modal:hover {
+    color: #373737;
+    background-color: #a5a5a5;
+    border: 1px solid #373737;
+}
+
+/*---------botoes rodape---------*/
+#btn-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  margin: -4rem 0 0 0;
+  flex-wrap: wrap;
+}
+
+/*----alterar fundo, github e linkedin------*/
+#btn-rodape button {
+  font-size: 30px;
+  color: #635f7b;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #000;
+  box-shadow: 10px 4px 20px #000;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  width: auto;
+  height: auto;
+  margin-left: 1rem;
+}
+
+#btn-rodape button:hover {
+  color: #373737;
+  background-color: #a5a5a5;
+  border: 2px solid #000;
+}
+
+/*------notas adesivas-------*/
+#notes-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #575757;
+  z-index: 20;
+  max-width: auto;
+  min-width: 300px;
+  color: #eee;
+}
+
+#notes-text {
+  max-width: auto;
+  min-width: 100%;
+  border-radius: 5px;
+  background: #282828;
+  color: #eee;
+  border: none;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  min-height: 150px;
+}
+
+#notes-modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 19; 
+}
+
+#save-notes,
+#close-notes {
+  margin-right: 5px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#save-notes, #close-notes {
+    color: #a5a5a5;
+    border: 1px solid #a5a5a5;
+}
+#save-notes:hover, #close-notes:hover {
+    color: #a5a5a5;
+    color: #373737;
+    border: 1px solid #a5a5a5;
+}
+
+/* ------------- cronometro ----------------- */
+.cronometro-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+#cronometro {
+  font-size: 36px;
+  color: #ececec;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+#cronometro-container {
+  font-family: Cambria;
+  color: #b4bbc2;
+  background: linear-gradient(to bottom, rgba(64,64,64,0.8), rgba(0,0,0,0.6));
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 4px 20px #000;
+  user-select: none;
+}
+
+#cronometro-container #cronometro-display {
+  color: #eee;
+  background-color: #222;
+  padding: 15px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #444;
+  margin-bottom: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#cronometro-container input[type="number"] {
+  padding: 0.3rem;
+  background: rgba(0, 0, 0, 0.4); 
+  border: 1px solid #707070;
+  border-radius: 5px;
+  max-height: 25px;
+  color: #fff;
+  width: 80px;
+  margin-right: 0.5rem;
+}
+
+#cronometro-container button {
+  color: #a5a5a5;
+  background-color: transparent;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  width: auto;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+#cronometro-container button:hover {
+  color: #373737;
+  background-color: #a5a5a5;
+  border: none;
+}
+
+#cronometro-container button i {
+  color: #6c6c6c;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+#cronometro-container button:hover > i {
+  color: #373737;
+  background-color: transparent;
 }
