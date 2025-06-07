@@ -16,7 +16,7 @@ const bgVideo = document.getElementById("bg-video");
 const changeBgBtn = document.getElementById("change-bg-btn");
 
 let oldInputValue;
-
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 
 //// Funcoes
@@ -55,6 +55,24 @@ document.getElementById('linkedin-btn').addEventListener('click', function() {
   window.open(
     'https://www.linkedin.com/login/pt',
     'linkedinPopup',
+    'width=900,height=400,display=flex,top=200,left=300,resizable=yes,scrollbars=yes'
+  );
+});
+
+//botao drive
+document.getElementById('drive-btn').addEventListener('click', function() {
+  window.open(
+    'https://drive.google.com/drive',
+    'drivePopup',
+    'width=900,height=400,display=flex,top=200,left=300,resizable=yes,scrollbars=yes'
+  );
+});
+
+//botao gpt
+document.getElementById('gpt-btn').addEventListener('click', function() {
+  window.open(
+    'https://chatgpt.com/',
+    'gptPopup',
     'width=900,height=400,display=flex,top=200,left=300,resizable=yes,scrollbars=yes'
   );
 });

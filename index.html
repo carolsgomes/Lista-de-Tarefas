@@ -43,8 +43,9 @@
 
 <audio id="alarme" src="sons/fimCronometro.mp3" preload="auto"></audio>
 
-
+  
    <!-----------------container lista de tarefas---------------------->
+   <div id="todo-wrapper">
     <div class="todo-container">
         <header>
             <!--Cabeçalho da lista de tarefas-->
@@ -103,7 +104,6 @@
       </div>
     </div>
 
-
 <!------------------------------mini barra google--------------------------------------------->
 <div id="mini-google-form">
   <input 
@@ -130,6 +130,8 @@
     </div>
     <div id="calendar-dates"></div>
 
+    </div>
+
     <!---- adicionar/mostrar eventos -->
     <div id="event-modal">
       <h4 id="modal-date"></h4>
@@ -145,12 +147,14 @@
 
   <script src="calendar.js"></script>
 
- <!--botão para mudar o fundo-->
+ <!--botoes rodape-->
 <div id="btn-rodape">
   <button id="change-bg-btn" class="fa-solid fa-image" title="Alterar background"></button>
-  <button id="github-btn" class="fa-brands fa-github" title="Abrir Github"></button>
-  <button id="linkedin-btn" class="fa-brands fa-linkedin" title="Abrir Linkedin"></button>
   <button id="notes-btn" class="fa-solid fa-note-sticky" title="Anotações"></button>
+  <button id="github-btn" class="fa-brands fa-github" title="Github"></button>
+  <button id="linkedin-btn" class="fa-brands fa-linkedin" title="Linkedin"></button>
+  <button id="drive-btn" class="fa-brands fa-google-drive" title="Google Drive"></button>
+  <button id="gpt-btn" class="fa-solid fa-brain" title="Chat GPT"></button>
 </div>
 <!--modal das notas -->
 <div id="notes-modal" style="display:none;">

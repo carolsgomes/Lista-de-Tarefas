@@ -89,10 +89,9 @@ input, select { /*lacunas de entrada*/
 .todo-container {
   justify-content: space-between;
   max-width: 400px;
-  max-height: 420px;
-  height: 420px;
+  max-height: 400px;
+  height: 400px;
   padding: 1rem 1rem 1rem 1rem;
-  margin: -12rem 0 0.5rem 4rem;
   background: linear-gradient(
     to bottom, 
     rgba(64, 64, 64, 0.8),
@@ -104,20 +103,24 @@ input, select { /*lacunas de entrada*/
   box-shadow: 10px 4px 20px #000;
   display: flex;
   flex-direction: column;
+  margin-left: 4rem;
+  margin-top: -10.2rem;
 }
 
 .todo-container header {
+    font-size: 18px;
     text-align: center;
-    padding: 0 1rem 0.2rem 1rem;
+    padding: 0 1rem 0 1rem;
     border-bottom: 1px solid #575757;
 }
 .cabecalho {
-    color: #ececec;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
-      0 0 20px rgba(255, 255, 255, 0.8);
-    font-family: Georgia;
-    font-style: italic;
-    font-size: 18px;
+  text-align: center;
+  color: #ececec;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+               0 0 20px rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  font-family: Georgia, serif;
+  font-size: 20px;
 }
 
 /* titulos lista de tarefas*/
@@ -174,7 +177,7 @@ input, select { /*lacunas de entrada*/
   flex: 1;
   font-family: Cambria;
   color: #fcfcfc;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .todo button {
@@ -323,7 +326,7 @@ input, select { /*lacunas de entrada*/
 #mini-calendar {
   max-width: 400px;
   width: 400px;
-  min-height: 200px;
+  min-height: 220px;
   max-height: 220px;
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid #000;
@@ -578,6 +581,7 @@ input, select { /*lacunas de entrada*/
   font-family: Cambria;
   color: #b4bbc2;
   background: linear-gradient(to bottom, rgba(64,64,64,0.8), rgba(0,0,0,0.6));
+  backdrop-filter: blur(5px);
   border: 2px solid #000;
   border-radius: 15px;
   padding: 1rem 2rem;
@@ -650,8 +654,8 @@ input, select { /*lacunas de entrada*/
   top: 20px;
   right: 20px;
   width: 400px;
-  max-height: 420px;
-  height: 420px;
+  max-height: 620px;
+  height: 620px;
   padding: 1rem;
   margin-top: 0.5rem;
   background: linear-gradient(
@@ -665,7 +669,7 @@ input, select { /*lacunas de entrada*/
   box-shadow: 10px 4px 20px #000;
   display: flex;
   flex-direction: column;
-  color: #ececec;
+  color: #fcfcfc;
   font-family: Cambria;
   font-style: italic;
   font-size: 18px;
@@ -694,13 +698,13 @@ input, select { /*lacunas de entrada*/
   border-radius: 8px;
   margin-top: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Georgia;
   font-size: 14px;
   color: #fcfcfc;
 }
 #curso-form input {
   width: 100%;      
-  margin-bottom: 12px; 
+  margin-bottom: 0.5rem; 
   padding: 12px;      
   border-radius: 8px;
   border: 1px solid #707070;
@@ -788,9 +792,8 @@ input, select { /*lacunas de entrada*/
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #eee;
-  color: #333;
+  border: 1px solid #575757;
+  background-color: #373737;
   font-weight: normal;
   cursor: pointer;
   font-size: 16px;
@@ -798,6 +801,6 @@ input, select { /*lacunas de entrada*/
 }
 
 #curso-form button:hover {
-  background-color: #ddd;
-  color: #000;
+  background-color: #929292;
+  color: #373737;
 }
