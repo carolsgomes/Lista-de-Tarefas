@@ -648,7 +648,8 @@ input, select { /*lacunas de entrada*/
   color: #373737;
   background-color: transparent;
 }
-/*cursos*/
+
+/* ------------- cronograma de cursos ----------------- */
 #curso-container {
   position: absolute;
   top: 20px;
@@ -689,7 +690,7 @@ input, select { /*lacunas de entrada*/
   font-size: 20px;
 }
 
-/* Lista de cursos */
+/*lista de cursos */
 #lista-cursos {
   flex: 1;
   overflow-y: auto;
@@ -720,7 +721,7 @@ input, select { /*lacunas de entrada*/
 }
 
 
-/* Scrollbar */
+/*scrollbar */
 #lista-cursos::-webkit-scrollbar {
   width: 8px;
 }
@@ -740,7 +741,7 @@ input, select { /*lacunas de entrada*/
   transition: background-color 0.3s ease;
 }
 
-/* Itens de curso */
+/*itens de curso */
 .curso-item {
   background: transparent;
   padding: 0.5rem 0 0.5rem 0.5rem;
@@ -765,7 +766,7 @@ input, select { /*lacunas de entrada*/
   border-radius: 2px;
 }
 
-/* Barra de progresso */
+/*barra de progresso */
 .barra-externa {
   width: 100%;
   height: 10px;
