@@ -1,4 +1,4 @@
-# 📋 multiTarefas – Central de Produtividade Pessoal
+# 📋 DIÁRIO DE ESTUDOS
 
 O **Diário de Estudos** É um sistema interativo que auxilia o usuário a organizar sua rotina de estudos, por meio de módulos funcionais como lista de tarefas, cronograma de cursos, calendário e recursos adicionais.
 
