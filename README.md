@@ -72,7 +72,7 @@ Apresentação oficial do projeto com explicação das seções e funcionalidade
 
 1. Clone ou baixe o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/multiTarefas.git
+   git clone https://github.com/carolsgomes/Lista-de-Tarefas.git
    ```
 2. Abra o arquivo `index.html` no navegador.
 3. Caso os vídeos de fundo não carreguem corretamente, utilize o arquivo `materiais-de-apoio.zip` e extraia a pasta `imagens` com os arquivos `.mp4`.
