@@ -1,24 +1,25 @@
 # 📋 multiTarefas – Central de Produtividade Pessoal
 
-O **multiTarefas** é um projeto web completo que integra diversas funcionalidades de organização pessoal em uma única interface acessível, intuitiva e leve. Ideal para estudantes, profissionais ou qualquer pessoa que deseje concentrar suas anotações, tarefas, calendário e estudos em um só lugar.
+O **Diário de Estudos** É um sistema interativo que auxilia o usuário a organizar sua rotina de estudos, por meio de módulos funcionais como lista de tarefas, cronograma de cursos, calendário e recursos adicionais.
 
 ---
 
 ## 🎯 Objetivo
 
-Unificar ferramentas essenciais como lista de tarefas, bloco de notas, cronômetro, calendário e acompanhamento de cursos, proporcionando ao usuário mais foco, produtividade e organização diária — **sem depender de múltiplos aplicativos**.
+O projeto foi pensado como uma plataforma para unificar ferramentas essenciais de organização pessoal para incentivo de estudos. O foco é a produtividade e o gerenciamento de tempo do usuário. **sem depender de múltiplos aplicativos**.
+O código está organizado de forma modular, o que facilita a leitura, manutenção e escalabilidade. 
 
 ---
 
 ## 🧩 Funcionalidades
 
-- ✅ Lista de tarefas com filtros, busca e edição
-- 📅 Calendário com lembretes e feriados em destaque
+- ✅ Lista de tarefas com inclusão, filtros, busca, edição e remoção de tarefas;
+- 📅 Calendário com lembretes e feriados em destaque;
 - 📝 Notas adesivas com salvamento automático (sticky notes)
-- ⏱️ Cronômetro regressivo com alarme
-- 📚 Gerenciamento de cursos com barra de progresso
-- 🎨 Troca de fundos com vídeos dinâmicos
-- 🔎 Mini Google para pesquisas rápidas
+- ⏱️ Cronômetro regressivo com alarme;
+- 📚 Gerenciamento de cursos com barra de progresso;
+- 🎨 Troca de fundos com vídeos dinâmicos;
+- 🔎 Mini Google para pesquisas rápidas;
 - 🔗 Atalhos para plataformas externas (GitHub, LinkedIn, ChatGPT, Google Drive)
 
 ---
@@ -36,16 +37,24 @@ Unificar ferramentas essenciais como lista de tarefas, bloco de notas, cronômet
 
 ```
 multiTarefas/
-├── index.html
-├── style.css
-├── script.js
-├── imagens/
+├── css/
+│   ├── style.css
+├── imagens
 │   ├── bgcat.mp4
-│   ├── home.mp4
-│   ├── galaxy.mp4
+│   ├── boreal.mp4
 │   ├── code.mp4
-│   └── colors.mp4
-├── materiais-de-apoio.zip  ← (Use este se os vídeos não carregarem)
+│   ├── colors.mp4
+│   ├── galaxy.mp4
+│   ├── home.mp4
+│   ├── letter.mp4
+│   ├── lights.mp4
+│   └── moon.mp4
+├── javascript/
+│   ├── scripts.js
+├── sons/
+│   ├── fimCronometro.js
+├── index.html
+├── materiais-de-apoio.zip  ← (Use este se os vídeos de fundo não carregarem)
 └── README.md
 ```
 
