@@ -1,22 +1,10 @@
 /* Projeto Lista de Tarefas - Ana Carolina Gomes, Clarisse Santana, Flavia Mota e Laiza Kevelly */
-/*============ BODY EM GERAL ============ */
-#cabecalho-central {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-#cabecalho-central h1 {
-  margin: 0;
-  color: #ececec;
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 20px rgba(255, 255, 255, 0.8);
-  font-style: italic;
-  font-family: Georgia, serif;
-  font-size: 60px;
-}
+#title {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  color: blue;
+  }
 
 /*============ BODY EM GERAL ============ */
 * {
@@ -30,15 +18,15 @@
 }
 
 /*============ TITULO CENTRAL ============ */
-#cabecalho-central h2 {
-text-align: center;
+.titulo-central {
+  text-align: center;
   color: #ececec;
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 20px rgba(255, 255, 255, 0.8);
   font-style: italic;
   font-family: Georgia, serif;
-  font-size: 20px;
+  font-size: 40px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+               0 0 20px rgba(255, 255, 255, 0.8);
+  margin-top: 8rem;
 }
 
 /*============ FUNDO ============ */
@@ -142,7 +130,7 @@ input, select { /* lacunas de entrada */
   display: flex;
   flex-direction: column;
   margin-left: 4rem;
-  margin-top: -10.2rem;
+  margin-top: -22rem;
 }
 
 /* cabeçalho da lista de tarefas */
@@ -428,7 +416,7 @@ input, select { /* lacunas de entrada */
 .calendar-day.holiday {
   color: #ff4d4d;
   font-weight: bold;
-  background-color: #33000030;
+  background-color: #42000030;
   border-radius: 12px;
 }
 
@@ -661,7 +649,7 @@ input, select { /* lacunas de entrada */
   border-radius: 5px;
   max-height: 25px;
   color: #fff;
-  width: 80px;
+  width: 85px;
   margin-right: 0.5rem;
 }
 
@@ -702,8 +690,8 @@ input, select { /* lacunas de entrada */
   top: 20px;
   right: 20px;
   width: 400px;
-  max-height: 620px;
-  height: 620px;
+  max-height: 640px;
+  height: 640px;
   padding: 1rem;
   margin-top: 0.5rem;
   background: linear-gradient(
@@ -760,7 +748,7 @@ input, select { /* lacunas de entrada */
   color: #fcfcfc;
   font-size: 14px;
   outline: none;
-  transition: border-color 0.3s, background 0.3s;
+  transition: border-color 0.3s;
 }
 
 #curso-form input:focus {
@@ -850,4 +838,21 @@ input, select { /* lacunas de entrada */
 #curso-form button:hover {
   background-color: #929292;
   color: #373737;
+}
+
+/*============ TOOLTIP ============ */
+.tooltip-box {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.9);
+  color: #eee;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: Cambria, serif;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+  max-width: 250px;
+  box-shadow: 0 0 10px #000;
 }

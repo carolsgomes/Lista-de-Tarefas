@@ -336,6 +336,7 @@ function renderCalendar(date) {
             '21-04',
             '01-05',
             '19-06',
+            '24-06',
             '07-09',
             '12-10',
             '02-11',
@@ -343,9 +344,10 @@ function renderCalendar(date) {
             '25-12',
         ];
 
-        if (holidays.includes(dateKey)) {
-            dateCell.classList.add('holiday');
-        }
+        const dayMonthKey = `${String(day).padStart(2, '0')}-${String(month + 1).padStart(2, '0')}`;
+        if (holidays.includes(dayMonthKey)) {
+            dateCell.classList.add('holiday');}
+
 
         if (events[dateKey]) {
             dateCell.classList.add('has-event');
@@ -526,12 +528,18 @@ updateDisplay();
 const form = document.getElementById('curso-form');
 const lista = document.getElementById('lista-cursos');
 
-// variaveis
+// variáveis
 let cursos = JSON.parse(localStorage.getItem('cursos')) || [];
 
-// duncoes dos cursos
+// funções auxiliares
 function salvarCursos() {
     localStorage.setItem('cursos', JSON.stringify(cursos));
+}
+
+function formatarDataParaInput(data) {
+    if (!data) return '';
+    const [ano, mes, dia] = data.split('-');
+    return `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
 }
 
 function renderizarCursos() {
@@ -540,95 +548,96 @@ function renderizarCursos() {
 }
 
 function renderizarCurso(curso, index) {
-  const item = document.createElement('div');
-  item.classList.add('curso-item');
+    const item = document.createElement('div');
+    item.classList.add('curso-item');
 
-  const header = document.createElement('div');
-  header.style.display = 'flex';
-  header.style.justifyContent = 'space-between';
-  header.style.alignItems = 'center';
+    const header = document.createElement('div');
+    header.style.display = 'flex';
+    header.style.justifyContent = 'space-between';
+    header.style.alignItems = 'center';
 
-  const info = document.createElement('div');
+    const info = document.createElement('div');
 
-  const titulo = document.createElement('strong');
-  titulo.style.fontSize = '16px';
-  titulo.textContent = curso.nome;
+    const titulo = document.createElement('strong');
+    titulo.style.fontSize = '16px';
+    titulo.textContent = curso.nome;
 
-  const autor = document.createElement('span');
-  autor.style.fontSize = '13px';
-  autor.style.opacity = '0.8';
-  autor.textContent = curso.autor;
+    const autor = document.createElement('span');
+    autor.style.fontSize = '13px';
+    autor.style.opacity = '0.8';
+    autor.textContent = curso.autor;
 
-  const status = document.createElement('span');
-  status.style.fontSize = '12px';
-  status.style.opacity = '0.9';
-  status.style.fontStyle = 'italic';
+    const status = document.createElement('span');
+    status.style.fontSize = '12px';
+    status.style.opacity = '0.9';
+    status.style.fontStyle = 'italic';
 
-  if (curso.dataInicio && curso.prazo) {
-    const inicio = new Date(curso.dataInicio);
-    const prazoFinal = new Date(inicio);
-    prazoFinal.setDate(inicio.getDate() + curso.prazo);
+    if (curso.dataInicio && curso.prazo) {
+        const [ano, mes, dia] = curso.dataInicio.split('-').map(Number);
+        const inicio = new Date(ano, mes - 1, dia);
+        const prazoFinal = new Date(inicio);
+        prazoFinal.setDate(inicio.getDate() + curso.prazo);
 
-    const hoje = new Date();
-    const estaNoPrazo = hoje <= prazoFinal;
+        const hoje = new Date();
+        const estaNoPrazo = hoje <= prazoFinal;
 
-    const dataFormatada = inicio.toLocaleDateString('pt-BR');
-    status.textContent = (estaNoPrazo ? 'Dentro do prazo' : 'Fora do prazo') + ` | Início: ${dataFormatada}`;
-  } else {
-    status.textContent = 'Prazo indefinido';
-  }
+        const dataFormatada = inicio.toLocaleDateString('pt-BR');
+        status.textContent = (estaNoPrazo ? 'Dentro do prazo' : 'Fora do prazo') + ` | Início: ${dataFormatada}`;
+    } else {
+        status.textContent = 'Prazo indefinido';
+    }
 
-  info.appendChild(titulo);
-  info.appendChild(document.createElement('br'));
-  info.appendChild(autor);
-  info.appendChild(document.createElement('br'));
-  info.appendChild(status);
+    info.appendChild(titulo);
+    info.appendChild(document.createElement('br'));
+    info.appendChild(autor);
+    info.appendChild(document.createElement('br'));
+    info.appendChild(status);
 
-  const botoes = document.createElement('div');
+    const botoes = document.createElement('div');
 
-  const btnEditar = document.createElement('button');
-  btnEditar.classList.add('editar-btn');
-  btnEditar.dataset.index = index;
-  btnEditar.style.marginRight = '5px';
-  const iconEditar = document.createElement('i');
-  iconEditar.className = 'fa-solid fa-pencil';
-  btnEditar.appendChild(iconEditar);
+    const btnEditar = document.createElement('button');
+    btnEditar.classList.add('editar-btn');
+    btnEditar.dataset.index = index;
+    btnEditar.style.marginRight = '5px';
+    const iconEditar = document.createElement('i');
+    iconEditar.className = 'fa-solid fa-pencil';
+    btnEditar.appendChild(iconEditar);
 
-  const btnExcluir = document.createElement('button');
-  btnExcluir.classList.add('excluir-btn');
-  btnExcluir.dataset.index = index;
-  const iconExcluir = document.createElement('i');
-  iconExcluir.className = 'fa-solid fa-eraser';
-  btnExcluir.appendChild(iconExcluir);
+    const btnExcluir = document.createElement('button');
+    btnExcluir.classList.add('excluir-btn');
+    btnExcluir.dataset.index = index;
+    const iconExcluir = document.createElement('i');
+    iconExcluir.className = 'fa-solid fa-eraser';
+    btnExcluir.appendChild(iconExcluir);
 
-  botoes.appendChild(btnEditar);
-  botoes.appendChild(btnExcluir);
+    botoes.appendChild(btnEditar);
+    botoes.appendChild(btnExcluir);
 
-  header.appendChild(info);
-  header.appendChild(botoes);
+    header.appendChild(info);
+    header.appendChild(botoes);
 
-  const barraExterna = document.createElement('div');
-  barraExterna.classList.add('barra-externa');
-  barraExterna.style.marginTop = '8px';
+    const barraExterna = document.createElement('div');
+    barraExterna.classList.add('barra-externa');
+    barraExterna.style.marginTop = '8px';
 
-  const barraInterna = document.createElement('div');
-  barraInterna.classList.add('barra-interna');
-  barraInterna.style.width = `${curso.percentual}%`;
-  barraExterna.appendChild(barraInterna);
+    const barraInterna = document.createElement('div');
+    barraInterna.classList.add('barra-interna');
+    barraInterna.style.width = `${curso.percentual}%`;
+    barraExterna.appendChild(barraInterna);
 
-  const progresso = document.createElement('div');
-  progresso.style.fontSize = '12px';
-  progresso.style.marginTop = '4px';
-  progresso.textContent = `${curso.percentual}% concluído`;
+    const progresso = document.createElement('div');
+    progresso.style.fontSize = '12px';
+    progresso.style.marginTop = '4px';
+    progresso.textContent = `${curso.percentual}% concluído`;
 
-  item.appendChild(header);
-  item.appendChild(barraExterna);
-  item.appendChild(progresso);
+    item.appendChild(header);
+    item.appendChild(barraExterna);
+    item.appendChild(progresso);
 
-  lista.appendChild(item);
+    lista.appendChild(item);
 }
 
-// event listeners cursos
+// eventos
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -638,14 +647,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const atual = parseInt(document.getElementById('moduloAtual').value);
         const autor = document.getElementById('autor').value;
         const prazo = parseInt(document.getElementById('prazo').value);
-        const dataInicio = document.getElementById('dataInicio').value;
+        const dataInicio = document.getElementById('dataInicio').value; // formato yyyy-MM-dd
         const percentual = Math.min(100, ((atual / total) * 100).toFixed(0));
 
         const novoCurso = { nome, total, atual, autor, prazo, dataInicio, percentual };
         cursos.unshift(novoCurso);
 
         salvarCursos();
-
         renderizarCursos();
         form.reset();
     });
@@ -667,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('moduloAtual').value = curso.atual;
             document.getElementById('autor').value = curso.autor;
             document.getElementById('prazo').value = curso.prazo;
-            document.getElementById('dataInicio').value = curso.dataInicio || '';
+            document.getElementById('dataInicio').value = formatarDataParaInput(curso.dataInicio);
 
             cursos.splice(index, 1); 
             salvarCursos();
@@ -676,4 +684,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderizarCursos();
+});
+
+//////////TOOLTIP PERSONALIZADO////////////////
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip-box';
+  document.body.appendChild(tooltip);
+
+  let currentElement = null;
+
+  document.body.addEventListener('mouseover', (e) => {
+    const el = e.target.closest('[title]');
+    if (el && el.getAttribute('title')) {
+      currentElement = el;
+      const text = el.getAttribute('title');
+      el.dataset.originalTitle = text; // salva original
+      el.removeAttribute('title'); // evita tooltip nativo
+      tooltip.textContent = text;
+      tooltip.style.opacity = '1';
+    }
+  });
+
+  document.body.addEventListener('mousemove', (e) => {
+    if (currentElement) {
+      tooltip.style.left = `${e.pageX + 12}px`;
+      tooltip.style.top = `${e.pageY + 12}px`;
+    }
+  });
+
+  document.body.addEventListener('mouseout', (e) => {
+    const el = e.target.closest('[title], [data-original-title]');
+    if (el && currentElement) {
+      tooltip.style.opacity = '0';
+      el.setAttribute('title', el.dataset.originalTitle); 
+      delete el.dataset.originalTitle;
+      currentElement = null;
+    }
+  });
 });

@@ -32,10 +32,6 @@
 </head>
 
 <body>
-  <!------------------ titulo centalizado ----------------------->
-  <header id="cabecalho-central">
-    <h1></h1> <!--falta personalizar-->
-  </header>
 
   <!------------------ background ----------------------->
   <video autoplay muted loop id="bg-video">
@@ -65,6 +61,8 @@
 
   <audio id="alarme" src="sons/fimCronometro.mp3" preload="auto"></audio>
 
+    <!------------------ título ----------------------->
+  <h1 class="titulo-central">Diário de Estudos</h1>
   
   <!----------------- lista de tarefas ----------------------->
   <div id="todo-wrapper">
@@ -79,8 +77,8 @@
       <form id="todo-form">
         <p class="titulo-adicionar">Adicionar tarefa:</p>
         <div class="form-control">
-          <input type="text" id="todo-input" placeholder="Digite uma tarefa" />
-          <button type="submit">
+          <input type="text" id="todo-input" placeholder="Digite uma tarefa"/>
+          <button type="submit" title="Salvar">
             <i class="fa-solid fa-plus"></i> <!-- botao de adicionar -->
           </button>
         </div>
@@ -91,12 +89,12 @@
         <p>Editar tarefa:</p>
         <div class="form-control">
           <input type="text" id="edit-input" />
-          <button type="submit">
+          <button type="submit" title="Salvar">
             <i class="fa-solid fa-check"></i> <!-- botao de salvar edicao -->
           </button>
 
           <!-- botao para cancelar edicao -->
-          <button id="cancel-edit-btn">
+          <button id="cancel-edit-btn" title="Cancelar">
             <i class="fa-solid fa-xmark"></i> <!-- botao de cancelar edicaoo -->
           </button>
         </div> 
@@ -108,7 +106,7 @@
           <h4 class="titulo-pesquisar">Pesquisar tarefa:</h4>
           <form>
             <!-- Mensagem de busca -->
-            <input type="text" id="search-input" placeholder="Buscar" />
+            <input type="text" id="search-input" placeholder="Buscar" title="Buscar"/>
             <button id="erase-button">
               <!-- icon busca -->
               <i class="fa-solid fa-magnifying-glass"></i> <!-- botao busca -->
@@ -142,7 +140,7 @@
       required 
       autocomplete="off" 
     />
-    <button type="button" id="mini-google-btn">
+    <button type="button" id="mini-google-btn" title="Buscar">
       <i class="fa-brands fa-google"></i>
     </button>
   </div>
@@ -172,8 +170,8 @@
       <h4 id="modal-date"></h4>
       <textarea id="event-text" rows="5" placeholder="Digite seu lembrete aqui..."></textarea>
       <div style="margin-top:10px; text-align:right;">
-        <button id="save-event" class="fa-solid fa-check" style="cursor:pointer;"></button>
-        <button id="close-modal" class="fa-solid fa-xmark" style="cursor:pointer;"></button>
+        <button id="save-event" class="fa-solid fa-check" style="cursor:pointer;" title="Salvar"></button>
+        <button id="close-modal" class="fa-solid fa-xmark" style="cursor:pointer;" title="Cancelar"></button>
       </div>
     </div>
 
@@ -214,7 +212,7 @@
       <input type="number" id="prazo" placeholder="Prazo (dias)" required />
       <label for="dataInicio">Data de início:</label>
       <input type="date" id="dataInicio" required>
-      <button type="submit">Incluir</button>
+      <button type="submit" title="Salvar">Incluir</button>
     </form>
 
     <div id="lista-cursos"></div>
