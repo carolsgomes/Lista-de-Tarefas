@@ -64,7 +64,7 @@ multiTarefas/
 
 Apresentação oficial do projeto com explicação das seções e funcionalidades:
 
-🔗 [Visualizar Apresentação no Canva](https://www.canva.com/design/DAGsDCejAZI/4xVTGDIg4-dRFCPdgXrTHQ/view?utm_content=DAGsDCejAZI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1be2d27105)
+🔗 [Visualizar Apresentação no Canva](https://www.canva.com/design/DAGsDWMS5sc/byauAcMrTl2SCfqkLbCVag/view?utm_content=DAGsDWMS5sc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdaa5cac31d)
 
 ---
 
