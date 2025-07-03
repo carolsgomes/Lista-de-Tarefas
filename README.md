@@ -36,7 +36,7 @@ O código está organizado de forma modular, o que facilita a leitura, manutenç
 ## 📁 Estrutura do Projeto
 
 ```
-multiTarefas/
+ListaTarefas/
 ├── css/
 │   ├── style.css
 ├── imagens
