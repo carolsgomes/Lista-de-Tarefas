@@ -174,7 +174,15 @@ const bgVideo = document.getElementById("bg-video");
 const changeBgBtn = document.getElementById("change-bg-btn");
 
 // variaveis 
-const videoSources = ["imagens/bgcat.mp4", "imagens/moon.mp4", "imagens/galaxy.mp4", "imagens/home.mp4", "imagens/boreal.mp4", "imagens/code.mp4", "imagens/letter.mp4", "imagens/lights.mp4", "imagens/colors.mp4"];
+const videoSources = ["imagens/bgcat.mp4", 
+    "imagens/moon.mp4", 
+    "imagens/galaxy.mp4", 
+    "imagens/home.mp4", 
+    "imagens/boreal.mp4", 
+    "imagens/code.mp4", 
+    "imagens/letter.mp4", 
+    "imagens/lights.mp4", 
+    "imagens/colors.mp4"];
 let currentVideoIndex = 0;
 
 // event listeners do Fundo
