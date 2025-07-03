@@ -39,7 +39,7 @@ O código está organizado de forma modular, o que facilita a leitura, manutenç
 ListaTarefas/
 ├── css/
 │   ├── style.css
-├── imagens
+├── imagens/
 │   ├── bgcat.mp4
 │   ├── boreal.mp4
 │   ├── code.mp4
